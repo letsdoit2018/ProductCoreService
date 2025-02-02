@@ -19,4 +19,8 @@ public class ApplicationExceptions {
     public static <T> Mono<T> missingPartnerVariantId(){
         return Mono.error(new InvalidInputException("Variant Id is required"));
     }
+
+    public static <T> Mono<T> missingPartnerBusinessId(){
+        return Mono.error(new InvalidInputException("Partner Business Id is required"));
+    }
 }

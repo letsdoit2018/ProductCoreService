@@ -1,12 +1,83 @@
 
 package com.letsdoit.core.product.domain;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import org.springframework.data.annotation.Id;
+
+import java.util.LinkedHashMap;
+import java.util.Map;
+import javax.annotation.Generated;
+import com.fasterxml.jackson.annotation.JsonAnyGetter;
+import com.fasterxml.jackson.annotation.JsonAnySetter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
+import java.util.LinkedHashMap;
+import java.util.Map;
+import javax.annotation.Generated;
+import com.fasterxml.jackson.annotation.JsonAnyGetter;
+import com.fasterxml.jackson.annotation.JsonAnySetter;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
+//@JsonInclude(JsonInclude.Include.NON_NULL)
+//@JsonPropertyOrder({
+//        "variant_id",
+//        "product_description"
+//})
+//@Generated("jsonschema2pojo")
+//public class PartnerVariant {
+//
+//    @JsonProperty("variant_id")
+//    private String variantId;
+//    @JsonProperty("product_description")
+//    private String productDescription;
+//    @JsonIgnore
+//    private Map<String, Object> additionalProperties = new LinkedHashMap<String, Object>();
+//
+//    public PartnerVariant() {
+//    }
+//
+//    @JsonProperty("variant_id")
+//    public String getVariantId() {
+//        return variantId;
+//    }
+//
+//    @JsonProperty("variant_id")
+//    public void setVariantId(String variantId) {
+//        this.variantId = variantId;
+//    }
+//
+//    @JsonProperty("product_description")
+//    public String getProductDescription() {
+//        return productDescription;
+//    }
+//
+//    @JsonProperty("product_description")
+//    public void setProductDescription(String productDescription) {
+//        this.productDescription = productDescription;
+//    }
+//
+//    @JsonAnyGetter
+//    public Map<String, Object> getAdditionalProperties() {
+//        return this.additionalProperties;
+//    }
+//
+//    @JsonAnySetter
+//    public void setAdditionalProperty(String name, Object value) {
+//        this.additionalProperties.put(name, value);
+//    }
+//
+//}
+//
+//
 //import java.util.LinkedHashMap;
 import java.util.List;
 //import java.util.Map;
 import javax.annotation.Generated;
-import com.fasterxml.jackson.annotation.JsonAnyGetter;
-import com.fasterxml.jackson.annotation.JsonAnySetter;
 //import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -16,10 +87,10 @@ import org.springframework.data.annotation.Id;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "variant_id",
+    "id",
     "partner_business_id",
     "product_title",
-    "_tags",
+    "tags",
     "product_description",
     "legal_description",
     "country_of_origin",
@@ -27,23 +98,15 @@ import org.springframework.data.annotation.Id;
     "variant_sku"
 })
 @Generated("jsonschema2pojo")
-//@Builder
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
-@Getter
-@Setter
 public class PartnerVariant {
-
     @Id
+    @JsonProperty("id")
     private String id;
-    @JsonProperty("variant_id")
-    private String variantId;
     @JsonProperty("partner_business_id")
     private String partnerBusinessId;
     @JsonProperty("product_title")
     private String productTitle;
-    @JsonProperty("_tags")
+    @JsonProperty("tags")
     private List<Tag> tags;
     @JsonProperty("product_description")
     private String productDescription;
@@ -55,39 +118,39 @@ public class PartnerVariant {
     private List<String> bullets;
     @JsonProperty("variant_sku")
     private List<VariantSku> variantSku;
-//    @JsonIgnore
-//    private Map<String, Object> additionalProperties = new LinkedHashMap<String, Object>();
-//
-    @JsonProperty("variant_id")
-    public String getVariantId() {
-        return variantId;
+    @JsonIgnore
+    private Map<String, Object> additionalProperties = new LinkedHashMap<String, Object>();
+
+    @JsonProperty("id")
+    public String getId() {
+        return id;
     }
 
-    @JsonProperty("variant_id")
-    public void setVariantId(String variantId) {
-        this.variantId = variantId;
+    @JsonProperty("id")
+    public void setId(String id) {
+        this.id = id;
     }
-//
-//    public PartnerVariant withVariantId(String variantId) {
-//        this.variantId = variantId;
-//        return this;
-//    }
-//
-//    @JsonProperty("partner_business_id")
-//    public String getPartnerBusinessId() {
-//        return partnerBusinessId;
-//    }
-//
-//    @JsonProperty("partner_business_id")
-//    public void setPartnerBusinessId(String partnerBusinessId) {
-//        this.partnerBusinessId = partnerBusinessId;
-//    }
-//
-//    public PartnerVariant withPartnerBusinessId(String partnerBusinessId) {
-//        this.partnerBusinessId = partnerBusinessId;
-//        return this;
-//    }
-//
+
+    public PartnerVariant withId(String id) {
+        this.id = id;
+        return this;
+    }
+
+    @JsonProperty("partner_business_id")
+    public String getPartnerBusinessId() {
+        return partnerBusinessId;
+    }
+
+    @JsonProperty("partner_business_id")
+    public void setPartnerBusinessId(String partnerBusinessId) {
+        this.partnerBusinessId = partnerBusinessId;
+    }
+
+    public PartnerVariant withPartnerBusinessId(String partnerBusinessId) {
+        this.partnerBusinessId = partnerBusinessId;
+        return this;
+    }
+
 //    @JsonProperty("product_title")
 //    public String getProductTitle() {
 //        return productTitle;
@@ -250,7 +313,7 @@ public class PartnerVariant {
 //        sb.append(',');
 //        sb.append("additionalProperties");
 //        sb.append('=');
-//        sb.append(((this.additionalProperties == null)?"<null>":this.additionalProperties));
+//        //sb.append(((this.additionalProperties == null)?"<null>":this.additionalProperties));
 //        sb.append(',');
 //        if (sb.charAt((sb.length()- 1)) == ',') {
 //            sb.setCharAt((sb.length()- 1), ']');
@@ -267,7 +330,7 @@ public class PartnerVariant {
 //        result = ((result* 31)+((this.partnerBusinessId == null)? 0 :this.partnerBusinessId.hashCode()));
 //        result = ((result* 31)+((this.variantId == null)? 0 :this.variantId.hashCode()));
 //        result = ((result* 31)+((this.countryOfOrigin == null)? 0 :this.countryOfOrigin.hashCode()));
-//        result = ((result* 31)+((this.additionalProperties == null)? 0 :this.additionalProperties.hashCode()));
+//        //result = ((result* 31)+((this.additionalProperties == null)? 0 :this.additionalProperties.hashCode()));
 //        result = ((result* 31)+((this.productDescription == null)? 0 :this.productDescription.hashCode()));
 //        result = ((result* 31)+((this.legalDescription == null)? 0 :this.legalDescription.hashCode()));
 //        result = ((result* 31)+((this.variantSku == null)? 0 :this.variantSku.hashCode()));

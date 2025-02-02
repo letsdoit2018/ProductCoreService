@@ -17,7 +17,6 @@ public class PartnerVariantDomainListener<T> {
             docID.setAccessible(true);
             Object value = docID.get(obj);
             if(value == null) {
-
                 value=  UUID.randomUUID().toString();
                 docID.set(obj,value);
             }

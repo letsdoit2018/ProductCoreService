@@ -21,14 +21,14 @@ public class PartnerVariantService {
         return this.partnerVariantRepository.findBy(PageRequest.of(page - 1, size)); // zero-indexed
     }
 
-    //To check with Arindam whether it should return Flux or Mono
-    public Flux<PartnerVariant> getPartnerVariantId(String variantId) {
-        return this.partnerVariantRepository.findByVariantId(variantId);
+    public Mono<PartnerVariant> getPartnerVariantById(String id) {
+        return this.partnerVariantRepository.findById(id);
     }
 
     //Inserting a new PartnerVariant
     public Mono<PartnerVariant> insertPartnerVariant(Mono<PartnerVariant> partnerVariantMono) {
         return partnerVariantMono
+                //.log("Inside Service")
                 .flatMap(partnerVariant -> this.partnerVariantRepository.insert(partnerVariant));
     }
 
@@ -36,11 +36,12 @@ public class PartnerVariantService {
     public Mono<PartnerVariant> updatePartnerVariant(String id, Mono<PartnerVariant> partnerVariantMono) {
         return this.partnerVariantRepository.findById(id)
                 .flatMap(partnerVariant -> partnerVariantMono
-                        .doOnNext(partnerVariant1 -> partnerVariant1.setVariantId(id))
+                        .doOnNext(partnerVariant1 -> partnerVariant1.setId(id))
                         .flatMap(this.partnerVariantRepository::save));
     }
     //Deleting a PartnerVariant
-//    public Mono<Boolean> deletePartnerVariant(String id) {
-//        return this.partnerVariantRepository.deleteById(id);
-//    }
+    //Need to check how to make it Mono<Boolean>
+    public Mono<Void> deletePartnerVariant(String id) {
+        return this.partnerVariantRepository.deleteById(id);
+    }
 }
