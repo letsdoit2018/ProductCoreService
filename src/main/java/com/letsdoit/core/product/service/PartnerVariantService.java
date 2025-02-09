@@ -28,7 +28,6 @@ public class PartnerVariantService {
     //Inserting a new PartnerVariant
     public Mono<PartnerVariant> insertPartnerVariant(Mono<PartnerVariant> partnerVariantMono) {
         return partnerVariantMono
-                //.log("Inside Service")
                 .flatMap(partnerVariant -> this.partnerVariantRepository.insert(partnerVariant));
     }
 

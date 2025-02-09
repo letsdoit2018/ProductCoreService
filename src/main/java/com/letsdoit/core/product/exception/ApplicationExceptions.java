@@ -11,6 +11,10 @@ public class ApplicationExceptions {
         return Mono.error(new PartnerVariantNotFoundException(id));
     }
 
+    public static <T> Mono<T> partnerProductCategoryNotFound(String id){
+        return Mono.error(new PartnerProductCategoryNotFoundException(id));
+    }
+
     //This needs to be revisited
     public static <T> Mono<T> missingPlatformProductSupplierId(){
         return Mono.error(new InvalidInputException("PlatformProductSupplierId is required"));
